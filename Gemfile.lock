@@ -1,20 +1,20 @@
 PATH
   remote: .
   specs:
-    outrigger (1.0.0)
+    outrigger (1.1.0)
       activerecord (~> 4.1)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (4.2.4)
-      activesupport (= 4.2.4)
+    activemodel (4.2.6)
+      activesupport (= 4.2.6)
       builder (~> 3.1)
-    activerecord (4.2.4)
-      activemodel (= 4.2.4)
-      activesupport (= 4.2.4)
+    activerecord (4.2.6)
+      activemodel (= 4.2.6)
+      activesupport (= 4.2.6)
       arel (~> 6.0)
-    activesupport (4.2.4)
+    activesupport (4.2.6)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
@@ -25,7 +25,7 @@ GEM
     diff-lcs (1.2.5)
     i18n (0.7.0)
     json (1.8.3)
-    minitest (5.8.0)
+    minitest (5.8.4)
     rake (10.2.2)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
@@ -47,3 +47,6 @@ DEPENDENCIES
   outrigger!
   rake (~> 10.2)
   rspec (= 2.14.1)
+
+BUNDLED WITH
+   1.12.5
