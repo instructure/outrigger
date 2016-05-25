@@ -1,4 +1,3 @@
-require "taggable_migrations"
 require "rails"
 require "rake"
 
