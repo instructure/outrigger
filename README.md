@@ -23,3 +23,41 @@ Usage
 ``` rake db:migrate:tagged[predeploy] ```
 or
 ``` rake db:migrate:tagged[super_fun] ```
+
+Multiple Tags
+-------------
+
+Passing multiple tags to `db:migrate:tagged` means only run migrations that have
+all of the given tags.
+
+``` rake db:migrate:tagged[predeploy, dynamodb] ``` means run only migrations
+tagged with both `predeploy` and `dynamodb`. It will not run migrations tagged
+just `predeploy`.
+
+RuboCop Linter
+--------------
+
+Outrigger comes with a custom RuboCop linter that you can add to your project,
+to verify that all migrations have at least one valid tag.
+
+Put this into your `.rubocop.yml`.
+
+```
+require:
+  - outrigger/cops/migration/tagged
+
+Migration/Tagged:
+  Enabled: true
+  AllowedTags:
+    - predeploy
+    - postdeploy
+```
+
+Modify `AllowedTags` as necessary. Note that due to a bug in RuboCop, you'll
+currently get a warning on each run:
+
+```
+Warning: unrecognized cop Migration/Tagged found in .rubocop.yml
+```
+
+This is unfortunate, but can be safely ignored.
