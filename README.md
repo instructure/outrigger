@@ -23,5 +23,3 @@ Usage
 ``` rake db:migrate:tagged[predeploy] ```
 or
 ``` rake db:migrate:tagged[super_fun] ```
-
-

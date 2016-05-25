@@ -8,8 +8,7 @@ Gem::Specification.new do |spec|
   spec.name          = "outrigger"
   spec.version       = Outrigger::VERSION
   spec.authors       = ["Drew Bowman"]
-  spec.email         = ["dbowman@instructure.com"]
-  spec.homepage      = "http://www.instructure.com"
+  spec.homepage      = "https://github.com/instructure/outrigger"
   spec.summary       = "Tag migrations and run them separately"
   spec.license       = "MIT"
   spec.description   = "Migrations"
