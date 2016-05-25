@@ -1,6 +1,8 @@
 Outrigger
 ==========
 
+[![Build Status](https://travis-ci.org/instructure/outrigger.svg?branch=master)](https://travis-ci.org/instructure/outrigger)
+
 ### Tag your rails migrations
 
 Outrigger allows you to tag your migrations so that you can have
