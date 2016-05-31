@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    outrigger (1.1.0)
+    outrigger (1.1.1)
       activerecord (~> 4.1)
 
 GEM
@@ -25,7 +25,7 @@ GEM
     diff-lcs (1.2.5)
     i18n (0.7.0)
     json (1.8.3)
-    minitest (5.8.4)
+    minitest (5.9.0)
     rake (10.2.2)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
