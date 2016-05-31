@@ -5,7 +5,7 @@ module RuboCop
         def on_class(node)
           _name, superclass, body = *node
           if superclass == s(:const, s(:const, nil, :ActiveRecord), :Migration)
-            check(node, body) if body && body.type == :begin
+            check(node, body) if body
           end
         end
 
@@ -16,7 +16,7 @@ module RuboCop
         end
 
         def check(klass, node)
-          tag_node = node.children.compact.find { |n| n.type == :send && n.to_a[1] == :tag }
+          tag_node = node.type == :begin && node.children.compact.find { |n| n.type == :send && n.to_a[1] == :tag }
 
           if allowed_tags.empty?
             add_offense(tag_node, :expression, "No allowed tags have been defined in the RuboCop configuration.")
