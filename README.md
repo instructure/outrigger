@@ -26,6 +26,17 @@ Usage
 or
 ``` rake db:migrate:tagged[super_fun] ```
 
+### Using with [Switchman](https://github.com/instructure/switchman)
+
+If your application is also using Switchman to manage multiple shards, you'll
+want the `rake db:migrate:tagged` task to run against all shards, not
+just the default shard. To do this, add to a rake task file such as
+`lib/tasks/myapp.rake`:
+
+```ruby
+Switchman::Rake.shardify_task('db:migrate:tagged')
+```
+
 Multiple Tags
 -------------
 
