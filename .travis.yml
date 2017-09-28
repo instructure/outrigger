@@ -1,5 +1,20 @@
-sudo: required
-services:
-  - docker
+dist: trusty
+sudo: false
+language: ruby
+cache: bundler
+
+rvm:
+  - 2.3
+  - 2.4
+
+gemfile:
+  - spec/gemfiles/rails-4.2.gemfile
+  - spec/gemfiles/rails-5.0.gemfile
+
+before_install: gem update bundler
+bundler_args: --jobs 3
+install: bundle install --jobs 3
+
 script:
-  - ./build.sh
+  - bundle exec rubocop --fail-level autocorrect
+  - bundle exec rspec

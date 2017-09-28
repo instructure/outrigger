@@ -1,26 +1,29 @@
-# coding: utf-8
-lib = File.expand_path("../lib", __FILE__)
+lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require 'outrigger/version'
 
-Gem::Specification.new do |spec|
-  spec.name          = "outrigger"
-  spec.version       = Outrigger::VERSION
-  spec.authors       = ["Drew Bowman"]
-  spec.homepage      = "https://github.com/instructure/outrigger"
-  spec.summary       = "Tag migrations and run them separately"
-  spec.license       = "MIT"
-  spec.description   = "Migrations"
+Gem::Specification.new do |s|
+  s.name          = 'outrigger'
+  s.version       = Outrigger::VERSION
+  s.authors       = ['Drew Bowman']
+  s.homepage      = 'https://github.com/instructure/outrigger'
+  s.summary       = 'Tag migrations and run them separately'
+  s.license       = 'MIT'
+  s.description   = 'Migrations'
 
-  spec.files         = Dir.glob("{lib,spec}/**/*") + %w[Rakefile]
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  spec.require_paths = ["lib"]
+  s.files         = Dir.glob('{lib,spec}/**/*') + %w[Rakefile]
+  s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  s.test_files    = s.files.grep(%r{^(test|spec|features)/})
+  s.require_paths = ['lib']
 
-  spec.add_dependency "activerecord", "~> 4.1"
+  s.required_ruby_version = '~> 2.3'
 
-  spec.add_development_dependency "bundler", "~> 1.5"
-  spec.add_development_dependency "rake", "~> 10.2"
-  spec.add_development_dependency "rspec", "2.14.1"
+  s.add_dependency 'activerecord', '>= 4.2', '< 5.2'
+
+  s.add_development_dependency 'bundler', '~> 1.15'
+  s.add_development_dependency 'rake', '~> 12.0'
+  s.add_development_dependency 'rspec', '~> 3.6.0'
+  s.add_development_dependency 'rubocop', '~> 0.50.0'
+  s.add_development_dependency 'simplecov', '~> 0'
 end

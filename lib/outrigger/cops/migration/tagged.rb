@@ -4,9 +4,8 @@ module RuboCop
       class Tagged < Cop
         def on_class(node)
           _name, superclass, body = *node
-          if superclass == s(:const, s(:const, nil, :ActiveRecord), :Migration)
-            check(node, body) if body
-          end
+          return unless body && superclass == s(:const, s(:const, nil, :ActiveRecord), :Migration)
+          check(node, body)
         end
 
         private
@@ -16,19 +15,26 @@ module RuboCop
         end
 
         def check(klass, node)
-          tag_node = node.type == :begin && node.children.compact.find { |n| n.type == :send && n.to_a[1] == :tag }
+          tag = tag_node(node)
 
           if allowed_tags.empty?
-            add_offense(tag_node, :expression, "No allowed tags have been defined in the RuboCop configuration.")
-          elsif tag_node
-            add_offense(tag_node, :expression, "Tags may only be one of #{allowed_tags}.") unless allowed_tags.include? tag_node.children.last.to_a.last
+            add_offense(tag, :expression, 'No allowed tags have been defined in the RuboCop configuration.')
+          elsif tag
+            return if allowed_tags.include? tag.children.last.to_a.last
+            add_offense(tag, :expression, "Tags may only be one of #{allowed_tags}.")
           else
             add_offense(klass, :expression, "All migrations require a tag from #{allowed_tags}.")
           end
         end
 
+        def tag_node(node)
+          node.type == :begin && node.children.compact.find do |n|
+            n.type == :send && n.to_a[1] == :tag
+          end
+        end
+
         def allowed_tags
-          cop_config["AllowedTags"].map(&:to_sym)
+          cop_config['AllowedTags'].map(&:to_sym)
         end
       end
     end

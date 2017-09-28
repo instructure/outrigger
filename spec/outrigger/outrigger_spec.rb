@@ -1,7 +1,7 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe Outrigger do
-  describe "filter" do
+  describe 'filter' do
     before do
       class PreDeployMigration < ActiveRecord::Migration
         tag :predeploy
@@ -15,13 +15,13 @@ describe Outrigger do
       end
     end
 
-    it "should return a proc that tests migrations" do
+    it 'should return a proc that tests migrations' do
       filter = Outrigger.filter(:predeploy)
 
       expect(filter.call(PreDeployMigration)).to eq(true)
     end
 
-    it "should accept multiple tags" do
+    it 'should accept multiple tags' do
       filter = Outrigger.filter(:predeploy, :dynamo)
 
       expect(filter.call(MultiMigration)).to eq(true)

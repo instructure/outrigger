@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 class TestProxy
   include Outrigger::TaggableProxy
@@ -12,7 +12,7 @@ describe Outrigger::TaggableProxy do
     end
   end
 
-  it "it should delegate tags to the migration" do
+  it 'it should delegate tags to the migration' do
     proxy = TestProxy.new
     proxy.migration = PreDeployMigration.new
 

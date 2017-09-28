@@ -2,10 +2,10 @@ module Outrigger
   module Taggable
     def self.included(base)
       base.extend(ClassMethods)
+    end
 
-      def tags
-        self.class.tags
-      end
+    def tags
+      self.class.tags
     end
 
     module ClassMethods
