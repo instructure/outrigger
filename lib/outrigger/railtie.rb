@@ -6,7 +6,7 @@ module Outrigger
     railtie_name :taggable_migrations
 
     rake_tasks do
-      load 'tasks/migrate.rake'
+      load 'tasks/outrigger.rake'
     end
 
     initializer 'extend_migrations' do
