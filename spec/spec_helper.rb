@@ -4,9 +4,13 @@ SimpleCov.start do
   add_filter 'spec'
   track_files 'lib/**/*.rb'
 end
-SimpleCov.minimum_coverage(30) # TODO: add better coverage
+SimpleCov.minimum_coverage(75)
 
 require 'bundler/setup'
+require 'rails/railtie'
+require 'rubocop'
+require 'rubocop/rspec/support'
+
 require 'outrigger'
 
 RSpec.configure do |config|

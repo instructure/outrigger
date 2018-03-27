@@ -3,7 +3,7 @@ require 'active_record' unless defined? ActiveRecord
 require 'outrigger/taggable'
 require 'outrigger/taggable_proxy'
 
-require 'outrigger/railtie' if defined? Rails
+require 'outrigger/railtie' if defined? Rails::Railtie
 
 module Outrigger
   def self.filter(*tags)

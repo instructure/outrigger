@@ -1,6 +1,3 @@
-require 'rails'
-require 'rake'
-
 module Outrigger
   class Railtie < Rails::Railtie
     railtie_name :taggable_migrations

@@ -3,16 +3,26 @@ module RuboCop
     module Migration
       class Tagged < Cop
         def on_class(node)
-          _name, superclass, body = *node
-          return unless body && superclass == s(:const, s(:const, nil, :ActiveRecord), :Migration)
+          _name, _superclass, body = *node
+          return unless body && migration_class?(node)
           check(node, body)
         end
 
         private
 
-        def s(name, *args)
-          Parser::AST::Node.new(name, args)
-        end
+        def_node_matcher :migration_class?, <<~PATTERN
+          {
+            (class
+              (const nil _)
+              (const
+                (const nil :ActiveRecord) :Migration) ...)
+            (class
+              (const nil _)
+              (send
+                (const
+                  (const nil :ActiveRecord) :Migration) :[] _) ...)
+          }
+        PATTERN
 
         def check(klass, node)
           tag = tag_node(node)
