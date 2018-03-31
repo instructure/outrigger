@@ -1,6 +1,10 @@
 AllCops:
   TargetRubyVersion: 2.3
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
 Metrics/LineLength:
   Max: 120 # Default: 80
 

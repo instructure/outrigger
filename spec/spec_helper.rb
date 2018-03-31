@@ -4,7 +4,7 @@ SimpleCov.start do
   add_filter 'spec'
   track_files 'lib/**/*.rb'
 end
-SimpleCov.minimum_coverage(30) # TODO: add better coverage
+SimpleCov.minimum_coverage(85) # TODO: add better coverage
 
 require 'bundler/setup'
 require 'outrigger'
