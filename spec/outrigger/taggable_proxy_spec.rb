@@ -7,7 +7,7 @@ end
 
 describe Outrigger::TaggableProxy do
   before do
-    class PreDeployMigration < ActiveRecord::Migration
+    class PreDeployMigration < ActiveRecord::Migration[4.2]
       tag :predeploy
     end
   end

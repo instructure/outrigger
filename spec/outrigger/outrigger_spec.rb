@@ -3,14 +3,14 @@ require 'spec_helper'
 describe Outrigger do
   describe 'filter' do
     before do
-      class PreDeployMigration < ActiveRecord::Migration
+      class PreDeployMigration < ActiveRecord::Migration[4.2]
         tag :predeploy
       end
 
-      class UntaggedMigration < ActiveRecord::Migration
+      class UntaggedMigration < ActiveRecord::Migration[4.2]
       end
 
-      class MultiMigration < ActiveRecord::Migration
+      class MultiMigration < ActiveRecord::Migration[4.2]
         tag :predeploy, :dynamo
       end
     end

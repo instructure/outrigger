@@ -8,14 +8,14 @@ end
 
 describe Outrigger::Taggable do
   before do
-    class PreDeployMigration < ActiveRecord::Migration
+    class PreDeployMigration < ActiveRecord::Migration[4.2]
       tag :predeploy
     end
 
-    class UntaggedMigration < ActiveRecord::Migration
+    class UntaggedMigration < ActiveRecord::Migration[4.2]
     end
 
-    class PostDeployMigration < ActiveRecord::Migration
+    class PostDeployMigration < ActiveRecord::Migration[4.2]
       tag :postdeploy
     end
   end
