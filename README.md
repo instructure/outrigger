@@ -8,6 +8,16 @@ Outrigger
 Outrigger allows you to tag your migrations so that you can have
 complete control. This is especially useful for zero downtime deploys to Production environments.
 
+Requirements
+------------
+
+Starting with version `1.2.3`, this gem requires RuboCop version 0.52.0 or higher, because of
+a backwards-incompatible change to how cops report [offenses](https://github.com/bbatsov/rubocop/commit/a1893ba57b43d793c15bd66f6db47950ae2ef7bc#diff-bb699bbdd39f9057a30af6f90468ef1d).
+
+``` ruby
+gem "rubocop", "~> 0.52.0"
+```
+
 Usage
 ------------
 
