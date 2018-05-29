@@ -6,12 +6,6 @@ class TestProxy
 end
 
 describe Outrigger::TaggableProxy do
-  before do
-    class PreDeployMigration < ActiveRecord::Migration
-      tag :predeploy
-    end
-  end
-
   it 'it should delegate tags to the migration' do
     proxy = TestProxy.new
     proxy.migration = PreDeployMigration.new

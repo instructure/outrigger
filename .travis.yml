@@ -8,8 +8,9 @@ rvm:
   - 2.4
 
 gemfile:
-  - spec/gemfiles/rails-4.2.gemfile
   - spec/gemfiles/rails-5.0.gemfile
+  - spec/gemfiles/rails-5.1.gemfile
+  - spec/gemfiles/rails-5.2.gemfile
 
 before_install: gem update bundler
 bundler_args: --jobs 3
