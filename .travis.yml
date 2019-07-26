@@ -1,21 +1,13 @@
-dist: trusty
-sudo: false
+bundler_args: ""
 language: ruby
-cache: bundler
-
-rvm:
-  - 2.3
-  - 2.4
-
 gemfile:
   - spec/gemfiles/rails-5.0.gemfile
   - spec/gemfiles/rails-5.1.gemfile
   - spec/gemfiles/rails-5.2.gemfile
+rvm:
+  - "2.4"
+  - "2.5"
+script: bundle exec rake spec
 
-before_install: gem update bundler
-bundler_args: --jobs 3
-install: bundle install --jobs 3
-
-script:
-  - bundle exec rubocop --fail-level autocorrect
-  - bundle exec rspec
+before_install:
+  - gem update bundler
