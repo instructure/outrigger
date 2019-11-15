@@ -17,13 +17,13 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
-  s.required_ruby_version = '~> 2.3'
+  s.required_ruby_version = '>= 2.3.0'
 
-  s.add_dependency 'activerecord', '>= 5.0', '< 5.3'
+  s.add_dependency 'activerecord', '>= 5.0', '< 6.1'
 
   s.add_development_dependency 'bundler'
-  s.add_development_dependency 'railties', '>= 5.0', '< 5.3'
-  s.add_development_dependency 'rake', '~> 12.0'
+  s.add_development_dependency 'railties', '>= 5.0', '< 6.1'
+  s.add_development_dependency 'rake', '~> 13.0'
   s.add_development_dependency 'rspec', '~> 3.7'
   s.add_development_dependency 'rubocop', '~> 0.52.0'
   s.add_development_dependency 'simplecov', '~> 0'
