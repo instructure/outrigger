@@ -25,6 +25,15 @@ Usage
 ``` rake db:migrate:tagged[predeploy] ```
 or
 ``` rake db:migrate:tagged[super_fun] ```
+4. If you need to ensure migrations run in a certain order with regular
+   `db:migrate`, set up `Outrigger.ordered`. It can be a hash or a proc that
+   takes a tag; either way it needs to return a sortable value:
+```
+Outrigger.ordered = { predeploy: -1, postdeploy: 1 }
+```
+   This will run predeploys, untagged migrations (implicitly 0), and then
+   postdeploy migrations. Migrations with multiple tags will be looked up
+   by their first tag.
 
 ### Using with [Switchman](https://github.com/instructure/switchman)
 

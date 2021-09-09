@@ -9,6 +9,7 @@ end
 SimpleCov.minimum_coverage(85)
 
 require 'bundler/setup'
+require 'byebug'
 require 'rails/railtie'
 require 'rubocop'
 require 'rubocop/rspec/support'
@@ -17,6 +18,7 @@ require 'outrigger'
 
 ActiveRecord::Migration.include(Outrigger::Taggable)
 ActiveRecord::MigrationProxy.include(Outrigger::TaggableProxy)
+ActiveRecord::Migrator.prepend(Outrigger::Migrator)
 
 class PreDeployMigration < ActiveRecord::Migration[5.0]
   tag :predeploy

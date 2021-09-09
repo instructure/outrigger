@@ -10,8 +10,9 @@ module Outrigger
 
     initializer 'extend_migrations' do
       ActiveSupport.on_load :active_record do
-        ActiveRecord::Migration.include Outrigger::Taggable
-        ActiveRecord::MigrationProxy.include Outrigger::TaggableProxy
+        ActiveRecord::Migration.include(Outrigger::Taggable)
+        ActiveRecord::MigrationProxy.include(Outrigger::TaggableProxy)
+        ActiveRecord::Migrator.prepend(Outrigger::Migrator)
       end
     end
   end
