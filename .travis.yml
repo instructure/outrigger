@@ -1,13 +1,9 @@
 bundler_args: ""
 language: ruby
 gemfile:
-  - spec/gemfiles/rails-5.0.gemfile
-  - spec/gemfiles/rails-5.1.gemfile
-  - spec/gemfiles/rails-5.2.gemfile
-  - spec/gemfiles/rails-6.0.gemfile
-  - spec/gemfiles/rails-6.1.gemfile
+  - spec/gemfiles/rails_6.0.gemfile
+  - spec/gemfiles/rails_6.1.gemfile
 rvm:
-  - "2.5"
   - "2.6"
   - "2.7"
 

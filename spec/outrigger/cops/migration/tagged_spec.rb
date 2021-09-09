@@ -1,7 +1,8 @@
-require 'spec_helper'
+# frozen_string_literal: true
+
 require 'outrigger/cops/migration/tagged'
 
-RSpec.describe RuboCop::Cop::Migration::Tagged do # rubocop:disable Metrics/BlockLength
+RSpec.describe RuboCop::Cop::Migration::Tagged do # rubocop:disable RSpec/FilePath
   let(:config_hash) do
     {
       'Migration/Tagged' => {
@@ -23,7 +24,7 @@ RSpec.describe RuboCop::Cop::Migration::Tagged do # rubocop:disable Metrics/Bloc
     RUBY
   end
 
-  subject(:cop) { described_class.new(config) }
+  subject(:cop) { described_class.new(config) } # rubocop:disable RSpec/LeadingSubject
 
   shared_examples_for 'valid migrations' do
     it 'passes valid versioned migration' do
@@ -32,10 +33,10 @@ RSpec.describe RuboCop::Cop::Migration::Tagged do # rubocop:disable Metrics/Bloc
     end
   end
 
-  context 'valid config' do # rubocop:disable Metrics/BlockLength
+  context 'with valid config' do
     include_examples 'valid migrations'
 
-    context 'missing tags' do
+    context 'with missing tags' do
       let(:migration_class) do
         <<~RUBY
           class Test < ActiveRecord::Migration[4.2]
@@ -52,7 +53,7 @@ RSpec.describe RuboCop::Cop::Migration::Tagged do # rubocop:disable Metrics/Bloc
       end
     end
 
-    context 'invalid tag' do
+    context 'with invalid tag' do
       let(:migration_class) do
         <<~RUBY
           class Test < ActiveRecord::Migration[4.2]
@@ -71,7 +72,7 @@ RSpec.describe RuboCop::Cop::Migration::Tagged do # rubocop:disable Metrics/Bloc
     end
   end
 
-  context 'invalid config' do
+  context 'with invalid config' do
     let(:config_hash) do
       {
         'Migration/Tagged' => {

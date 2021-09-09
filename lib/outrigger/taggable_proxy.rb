@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Outrigger
   module TaggableProxy
     def self.included(_body)

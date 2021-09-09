@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RuboCop
   module Cop
     module Migration
@@ -5,6 +7,7 @@ module RuboCop
         def on_class(node)
           _name, _superclass, body = *node
           return unless body && migration_class?(node)
+
           check(node, body)
         end
 
@@ -33,6 +36,7 @@ module RuboCop
                         message: 'No allowed tags have been defined in the RuboCop configuration.'
           elsif tag
             return if allowed_tags.include? tag.children.last.to_a.last
+
             add_offense tag,
                         location: :expression,
                         message: "Tags may only be one of #{allowed_tags}."

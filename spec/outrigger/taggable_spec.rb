@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe Outrigger::Taggable do
   it 'PreDeployMigration should be predeploy' do

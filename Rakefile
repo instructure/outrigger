@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'bundler/gem_tasks'
 
 begin
@@ -6,14 +8,6 @@ begin
   RSpec::Core::RakeTask.new(:spec)
 
   task(default: :spec)
-rescue LoadError # rubocop:disable Lint/HandleExceptions
-  # no rspec available
-end
-
-task :console do
-  require 'irb'
-  require 'irb/completion'
-  require 'outrigger'
-  ARGV.clear
-  IRB.start
+rescue LoadError
+  nil
 end

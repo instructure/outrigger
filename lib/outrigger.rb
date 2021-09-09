@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_record' unless defined? ActiveRecord
 
 require 'outrigger/taggable'

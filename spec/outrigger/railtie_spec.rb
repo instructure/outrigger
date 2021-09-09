@@ -1,9 +1,7 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 describe Outrigger::Railtie do
-  let(:subject) { Outrigger::Railtie }
-
   it 'provides a railtie_name' do
-    expect(subject.railtie_name).to eq 'taggable_migrations'
+    expect(described_class.railtie_name).to eq 'taggable_migrations'
   end
 end

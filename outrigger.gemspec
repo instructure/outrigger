@@ -1,7 +1,6 @@
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+# frozen_string_literal: true
 
-require 'outrigger/version'
+require_relative 'lib/outrigger/version'
 
 Gem::Specification.new do |s|
   s.name          = 'outrigger'
@@ -17,15 +16,18 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
-  s.required_ruby_version = '>= 2.3.0'
+  s.required_ruby_version = '>= 2.6'
 
-  s.add_dependency 'activerecord', '>= 5.0', '< 6.2'
+  s.add_dependency 'activerecord', '>= 6.0', '< 6.2'
 
-  s.add_development_dependency 'bundler'
-  s.add_development_dependency 'railties', '>= 5.0', '< 6.2'
+  s.add_development_dependency 'bundler', '~> 2.2'
+  s.add_development_dependency 'byebug', '~> 11.1'
+  s.add_development_dependency 'railties', '>= 6.0', '< 6.2'
   s.add_development_dependency 'rake', '~> 13.0'
   s.add_development_dependency 'rspec', '~> 3.7'
-  s.add_development_dependency 'rubocop', '~> 0.52.0'
-  s.add_development_dependency 'simplecov', '~> 0'
-  s.add_development_dependency 'wwtd', '~> 1.3'
+  s.add_development_dependency 'rubocop', '~> 1.20'
+  s.add_development_dependency 'rubocop-rake', '~> 0.6'
+  s.add_development_dependency 'rubocop-rspec', '~> 2.4'
+  s.add_development_dependency 'simplecov', '~> 0.21'
+  s.add_development_dependency 'wwtd', '~> 1.4'
 end

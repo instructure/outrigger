@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'simplecov'
 SimpleCov.start do
   add_filter 'lib/outrigger/version.rb'
@@ -13,8 +15,8 @@ require 'rubocop/rspec/support'
 
 require 'outrigger'
 
-ActiveRecord::Migration.send :include, Outrigger::Taggable
-ActiveRecord::MigrationProxy.send :include, Outrigger::TaggableProxy
+ActiveRecord::Migration.include(Outrigger::Taggable)
+ActiveRecord::MigrationProxy.include(Outrigger::TaggableProxy)
 
 class PreDeployMigration < ActiveRecord::Migration[5.0]
   tag :predeploy
