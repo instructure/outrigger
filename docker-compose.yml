@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  app:
+    build: .
+    environment:
+      RAILS_ENV: test
+

@@ -1,14 +1,14 @@
-FROM instructure/rvm
+ARG  RUBY_VERSION=2.7
+FROM ruby:${RUBY_VERSION}
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-RUN rvm use --default 2.6
+RUN /bin/bash -lc "gem install bundler -v 2.2.23"
 
-COPY --chown=docker:docker outrigger.gemspec Gemfile* /usr/src/app/
-COPY --chown=docker:docker lib/outrigger/version.rb /usr/src/app/lib/outrigger/
+ARG BUNDLE_GEMFILE
+ENV BUNDLE_GEMFILE $BUNDLE_GEMFILE
 
-RUN /bin/bash -lc "rvm 2.6,2.7 do gem install bundler -v 2.2.15"
+RUN echo "gem: --no-document" >> ~/.gemrc
 
-RUN bundle install -j 4
-
-COPY --chown=docker:docker . /usr/src/app
+COPY . /app
+RUN /bin/bash -lc "bundle install --jobs 5"
