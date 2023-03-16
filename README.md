@@ -13,7 +13,7 @@ Usage
 
 1. Add `gem outrigger` to your Gemfile and run `bundle install`
 2. Tag migrations like so.
-```
+```ruby
   class PreDeployMigration < ActiveRecord::Migration
     tag :predeploy
   end
@@ -28,7 +28,7 @@ or
 4. If you need to ensure migrations run in a certain order with regular
    `db:migrate`, set up `Outrigger.ordered`. It can be a hash or a proc that
    takes a tag; either way it needs to return a sortable value:
-```
+```ruby
 Outrigger.ordered = { predeploy: -1, postdeploy: 1 }
 ```
    This will run predeploys, untagged migrations (implicitly 0), and then
@@ -64,7 +64,7 @@ to verify that all migrations have at least one valid tag.
 
 Put this into your `.rubocop.yml`.
 
-```
+```yaml
 require:
   - outrigger/cops/migration/tagged
 
@@ -76,3 +76,23 @@ Migration/Tagged:
 ```
 
 Modify `AllowedTags` as necessary.
+
+### RuboCop Conflicts
+
+If you use `rubocop-rails` and have the `Rails/ContentTag` cop enabled, you may
+see rubocop errors like the following on your migrations:
+```
+Rails/ContentTag: Use tag.predeploy instead of tag(:predeploy).
+  tag :predeploy
+  ^^^^^^^^^^^^^^
+```
+
+This warning is erroneous, as the rails `tag` method is really only relevant in
+controllers and views and is not even in scope for migrations.  To silence the
+warning, add the following to your `.rubocop.yml`:
+
+```yaml
+Rails/ContentTag:
+  Exclude:
+    - "**/db/migrate/*" # this cop is for views, not migrations, where it gets confused with outrigger
+```
