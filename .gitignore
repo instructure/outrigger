@@ -1,10 +1,8 @@
+/.bundle
 /.byebug_history
 /.rspec_status
 /.ruby-version
 /.yardoc
 /_yardoc/
 /coverage/
-/Gemfile.lock
-/spec/gemfiles/.bundle/
-/spec/gemfiles/*.gemfile.lock
 /**/*.gem

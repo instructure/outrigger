@@ -15,11 +15,11 @@ pipeline {
         axes {
           axis {
             name 'RUBY_VERSION'
-            values '2.6', '2.7', '3.0'
+            values '2.7', '3.0', '3.1', '3.2'
           }
           axis {
             name 'RAILS_VERSION'
-            values '6.0', '6.1', '7.0'
+            values '6.0', '6.1', '7.0', '7.1'
           }
         }
         excludes {
@@ -37,8 +37,8 @@ pipeline {
         stages {
           stage('Build') {
             steps {
-              sh "docker-compose build --pull --build-arg RUBY_VERSION=${RUBY_VERSION} --build-arg BUNDLE_GEMFILE=gemfiles/activerecord_${RAILS_VERSION}.gemfile app"
-              sh 'docker-compose run --rm app rake'
+              sh "docker compose build --pull --build-arg RUBY_VERSION=${RUBY_VERSION} --build-arg BUNDLE_LOCKFILE=Gemfile.activerecord-${RAILS_VERSION}.lock app"
+              sh 'docker compose run --rm app rake'
             }
           }
         }
@@ -47,14 +47,16 @@ pipeline {
 
     stage('Lint') {
       steps {
-        sh "docker-compose run --rm app bin/rubocop"
+        // We should be able to use Gemfile.lock here, but currently we cannot
+        sh "docker compose build --pull --build-arg BUNDLE_LOCKFILE=Gemfile.activerecord-7.1.lock"
+        sh "docker compose run --rm app bin/rubocop"
       }
     }
   }
 
   post {
     cleanup {
-      sh 'docker-compose down --remove-orphans --rmi all'
+      sh 'docker compose down --remove-orphans --rmi all'
     }
   }
 }

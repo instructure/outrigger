@@ -3,10 +3,10 @@ FROM ruby:${RUBY_VERSION}
 
 WORKDIR /app
 
-RUN /bin/bash -lc "gem install bundler -v 2.2.23"
+RUN /bin/bash -lc "gem install bundler -v 2.4.20"
 
-ARG BUNDLE_GEMFILE
-ENV BUNDLE_GEMFILE $BUNDLE_GEMFILE
+ARG BUNDLE_LOCKFILE
+ENV BUNDLE_LOCKFILE $BUNDLE_LOCKFILE
 
 RUN echo "gem: --no-document" >> ~/.gemrc
 
