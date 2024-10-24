@@ -5,7 +5,8 @@ namespace :db do
     desc 'Run migrations for a Tag'
     task tagged: %i[environment load_config] do |_t, args|
       puts("Migrating Tags: #{args.extras}")
-      ActiveRecord::Base.connection.migration_context.migrate(nil, &Outrigger.filter(args.extras))
+
+      Outrigger.migration_context.migrate(nil, &Outrigger.filter(args.extras))
     end
   end
 end
