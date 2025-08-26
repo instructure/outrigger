@@ -16,10 +16,10 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.metadata['rubygems_mfa_required'] = 'true'
 
-  s.required_ruby_version = '>= 2.6'
+  s.required_ruby_version = '>= 3.2'
 
-  s.add_dependency 'activerecord', '>= 6.0', '<= 8.0'
-  s.add_dependency 'railties', '>= 6.0', '<= 8.0'
+  s.add_dependency 'activerecord', '>= 6.0', '< 8.1'
+  s.add_dependency 'railties', '>= 6.0', '< 8.1'
 
   s.add_development_dependency 'bundler', '~> 2.2'
   s.add_development_dependency 'byebug', '~> 11.1'
@@ -27,6 +27,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec', '~> 3.7'
   s.add_development_dependency 'rubocop', '~> 1.20'
   s.add_development_dependency 'rubocop-rake', '~> 0.6'
-  s.add_development_dependency 'rubocop-rspec', '~> 2.4'
+  s.add_development_dependency 'rubocop-rspec', '~> 3.6'
   s.add_development_dependency 'simplecov', '~> 0.21'
 end

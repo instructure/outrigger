@@ -2,7 +2,7 @@
 
 require 'outrigger/cops/migration/tagged'
 
-RSpec.describe RuboCop::Cop::Migration::Tagged do # rubocop:disable RSpec/FilePath
+RSpec.describe RuboCop::Cop::Migration::Tagged do
   let(:config_hash) do
     {
       'Migration/Tagged' => {
@@ -34,7 +34,7 @@ RSpec.describe RuboCop::Cop::Migration::Tagged do # rubocop:disable RSpec/FilePa
   end
 
   context 'with valid config' do
-    include_examples 'valid migrations'
+    it_behaves_like 'valid migrations'
 
     context 'with missing tags' do
       let(:migration_class) do

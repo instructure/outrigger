@@ -2,6 +2,7 @@
 
 class TestProxy
   include Outrigger::TaggableProxy
+
   attr_accessor :migration
 end
 
