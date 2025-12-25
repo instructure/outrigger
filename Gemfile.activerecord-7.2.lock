@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     outrigger (3.1.0)
-      activerecord (>= 6.0, < 8.1)
-      railties (>= 6.0, < 8.1)
+      activerecord (>= 6.0, < 8.2)
+      railties (>= 6.0, < 8.2)
 
 GEM
   remote: https://rubygems.org/

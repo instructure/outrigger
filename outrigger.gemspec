@@ -18,8 +18,8 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 3.2'
 
-  s.add_dependency 'activerecord', '>= 6.0', '< 8.1'
-  s.add_dependency 'railties', '>= 6.0', '< 8.1'
+  s.add_dependency 'activerecord', '>= 6.0', '< 8.2'
+  s.add_dependency 'railties', '>= 6.0', '< 8.2'
 
   s.add_development_dependency 'bundler', '~> 2.2'
   s.add_development_dependency 'byebug', '~> 11.1'
