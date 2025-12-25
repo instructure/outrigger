@@ -10,6 +10,7 @@ SimpleCov.minimum_coverage(85)
 
 require 'bundler/setup'
 require 'byebug'
+require 'rails'
 require 'rails/railtie'
 require 'rubocop'
 require 'rubocop/rspec/support'
