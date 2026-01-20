@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    outrigger (3.1.0)
+    outrigger (3.2.0)
       activerecord (>= 6.0, < 8.2)
       railties (>= 6.0, < 8.2)
 
