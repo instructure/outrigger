@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'active_record' unless defined? ActiveRecord
+require "active_record" unless defined? ActiveRecord
 
-require 'outrigger/migrator'
-require 'outrigger/taggable'
-require 'outrigger/taggable_proxy'
+require "outrigger/migrator"
+require "outrigger/taggable"
+require "outrigger/taggable_proxy"
 
-require 'outrigger/railtie' if defined? Rails::Railtie
+require "outrigger/railtie" if defined? Rails::Railtie
 
 module Outrigger
   class << self
@@ -18,7 +18,7 @@ module Outrigger
     end
 
     def migration_context
-      if ActiveRecord.version < Gem::Version.new('7.2')
+      if ActiveRecord.version < Gem::Version.new("7.2")
         ActiveRecord::Base.connection.migration_context
       else
         ActiveRecord::Base.connection_pool.migration_context

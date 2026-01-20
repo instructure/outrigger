@@ -10,14 +10,16 @@ module Outrigger
     end
 
     let(:migrations) do
-      [PostDeployMigration.new(nil, 1), UntaggedMigration.new(nil, 2), PreDeployMigration.new(nil, 3),
+      [PostDeployMigration.new(nil, 1),
+       UntaggedMigration.new(nil, 2),
+       PreDeployMigration.new(nil, 3),
        MultiMigration.new(nil, 4)]
     end
 
     let(:versions) { [] }
     let(:direction) { :up }
     let(:schema_migration) do
-      if ActiveRecord.version < Gem::Version.new('7.1')
+      if ActiveRecord.version < Gem::Version.new("7.1")
         object_double(ActiveRecord::SchemaMigration, create_table: nil, all_versions: versions)
       else
         instance_double(ActiveRecord::SchemaMigration, create_table: nil, integer_versions: versions)
@@ -25,7 +27,7 @@ module Outrigger
     end
 
     let(:migrator) do
-      if ActiveRecord.version < Gem::Version.new('7.1')
+      if ActiveRecord.version < Gem::Version.new("7.1")
         ActiveRecord::Migrator.new(direction, migrations, schema_migration)
       else
         internal_metadata = instance_double(ActiveRecord::InternalMetadata, create_table: nil)
@@ -37,7 +39,7 @@ module Outrigger
       allow(ActiveRecord::InternalMetadata).to receive(:create_table)
     end
 
-    it 'sorts' do
+    it "sorts" do
       expect(migrator.runnable.map(&:class)).to eq(
         [
           PreDeployMigration, MultiMigration, UntaggedMigration, PostDeployMigration
@@ -45,11 +47,11 @@ module Outrigger
       )
     end
 
-    context 'when going down' do
+    context "when going down" do
       let(:versions) { [1, 2, 3, 4] }
       let(:direction) { :down }
 
-      it 'reverse sorts' do
+      it "reverse sorts" do
         expect(migrator.runnable.map(&:class)).to eq(
           [
             PostDeployMigration, UntaggedMigration, MultiMigration, PreDeployMigration

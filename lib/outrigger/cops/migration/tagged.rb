@@ -33,7 +33,7 @@ module RuboCop
           if allowed_tags.empty?
             add_offense tag,
                         location: :expression,
-                        message: 'No allowed tags have been defined in the RuboCop configuration.'
+                        message: "No allowed tags have been defined in the RuboCop configuration."
           elsif tag
             return if allowed_tags.include? tag.children.last.to_a.last
 
@@ -54,7 +54,7 @@ module RuboCop
         end
 
         def allowed_tags
-          cop_config['AllowedTags'].map(&:to_sym)
+          cop_config["AllowedTags"].map(&:to_sym)
         end
       end
     end

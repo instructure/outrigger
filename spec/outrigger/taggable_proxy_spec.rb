@@ -7,7 +7,7 @@ class TestProxy
 end
 
 describe Outrigger::TaggableProxy do
-  it 'delegates tags to the migration' do
+  it "delegates tags to the migration" do
     proxy = TestProxy.new
     proxy.migration = PreDeployMigration.new
 

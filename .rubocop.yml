@@ -1,25 +1,14 @@
-require:
+inherit_gem:
+  rubocop-inst:
+  - rubocop.yml
+  - rubocop-rspec.yml
+
+plugins:
   - rubocop-rake
-  - rubocop-rspec
 
 AllCops:
   NewCops: enable
   TargetRubyVersion: 3.2
-  Exclude:
-    - 'gemfiles/*'
 
-Metrics:
-  Enabled: false
-Bundler/DuplicatedGem:
-  Enabled: false
-RSpec/ExampleLength:
-  Enabled: false
-RSpec/MultipleExpectations:
-  Enabled: false
-RSpec/SpecFilePathFormat:
-  Exclude:
-    - 'spec/outrigger/cops/**/*.rb'
 Style/Documentation:
   Enabled: false
-Gemspec/DevelopmentDependencies:
-  EnforcedStyle: gemspec
