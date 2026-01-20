@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Migration
-      class Tagged < Cop
+      class Tagged < Base
         def on_class(node)
           _name, _superclass, body = *node
           return unless body && migration_class?(node)
@@ -32,17 +32,14 @@ module RuboCop
 
           if allowed_tags.empty?
             add_offense tag,
-                        location: :expression,
                         message: "No allowed tags have been defined in the RuboCop configuration."
           elsif tag
             return if allowed_tags.include? tag.children.last.to_a.last
 
             add_offense tag,
-                        location: :expression,
                         message: "Tags may only be one of #{allowed_tags}."
           else
             add_offense klass,
-                        location: :expression,
                         message: "All migrations require a tag from #{allowed_tags}."
           end
         end

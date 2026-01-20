@@ -3,6 +3,8 @@
 require "outrigger/cops/migration/tagged"
 
 RSpec.describe RuboCop::Cop::Migration::Tagged do
+  subject(:cop) { described_class.new(config) }
+
   let(:config_hash) do
     {
       "Migration/Tagged" => {
@@ -24,12 +26,10 @@ RSpec.describe RuboCop::Cop::Migration::Tagged do
     RUBY
   end
 
-  subject(:cop) { described_class.new(config) } # rubocop:disable RSpec/LeadingSubject
-
   shared_examples_for "valid migrations" do
     it "passes valid versioned migration" do
-      inspect_source(migration_class)
-      expect(cop.offenses.empty?).to be(true)
+      offenses = inspect_source(migration_class)
+      expect(offenses.empty?).to be(true)
     end
   end
 
@@ -47,9 +47,9 @@ RSpec.describe RuboCop::Cop::Migration::Tagged do
       end
 
       it "finds missing tag in versioned migration" do
-        inspect_source(migration_class)
-        expect(cop.offenses.empty?).to be(false)
-        expect(cop.offenses.first.message).to match(/All migrations require a tag from/)
+        offenses = inspect_source(migration_class)
+        expect(offenses.empty?).to be(false)
+        expect(offenses.first.message).to match(/All migrations require a tag from/)
       end
     end
 
@@ -65,9 +65,9 @@ RSpec.describe RuboCop::Cop::Migration::Tagged do
       end
 
       it "fails on invalid tag in versioned migration" do
-        inspect_source(migration_class)
-        expect(cop.offenses.empty?).to be(false)
-        expect(cop.offenses.first.message).to match(/Tags may only be one of/)
+        offenses = inspect_source(migration_class)
+        expect(offenses.empty?).to be(false)
+        expect(offenses.first.message).to match(/Tags may only be one of/)
       end
     end
   end
@@ -83,9 +83,9 @@ RSpec.describe RuboCop::Cop::Migration::Tagged do
     end
 
     it "fails on missing tags in configuration on versioned migration" do
-      inspect_source(migration_class)
-      expect(cop.offenses.empty?).to be(false)
-      expect(cop.offenses.first.message).to match(/No allowed tags have been defined/)
+      offenses = inspect_source(migration_class)
+      expect(offenses.empty?).to be(false)
+      expect(offenses.first.message).to match(/No allowed tags have been defined/)
     end
   end
 end
